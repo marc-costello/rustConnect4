@@ -109,10 +109,9 @@ fn human_move(_board: &Board) -> Result<u8, Box<dyn Error>> {
     Ok(input_int-1)
 }
 
-
 fn computer_move(_board: &Board) -> u8 {
     // for now pick a random number from 0-6
-    // we'll want to run minmax here in future...
+    // we'll want to run minmax here...
     let mut rng = thread_rng();
     rng.gen_range(0..=6)
 }
