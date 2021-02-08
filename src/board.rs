@@ -4,12 +4,13 @@ pub const X_BOARD_LENGTH: usize = 7;
 pub const Y_BOARD_LENGTH: usize = 6;
 
 pub type Board = [[Coin; Y_BOARD_LENGTH]; X_BOARD_LENGTH];
+pub type Coord = (usize, usize);
 
 pub fn new_board() -> Board {
     [[Coin::Empty; Y_BOARD_LENGTH]; X_BOARD_LENGTH]
 }
 
-pub fn drop_coin(board: &mut Board, coin: Coin, col: usize) -> (bool, (usize, usize)) {
+pub fn drop_coin(board: &mut Board, coin: Coin, col: usize) -> (bool, Coord) {
     let col_idx = col;
     for i in 0..(&board[col_idx]).len() {
         if board[col_idx][i] == Coin::Empty {

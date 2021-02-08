@@ -66,9 +66,11 @@ pub struct Game {
 
          if let Some(player) = outcome {
             // announce winner
+            renderer::render_board(&self.board);
             println!("{:?} HAS WON!", player);
          } else {
             // draw
+            renderer::render_board(&self.board);
             println!("THIS GAME IS A DRAW!");
          }
      }
