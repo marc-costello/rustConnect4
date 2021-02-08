@@ -1,5 +1,6 @@
 use std::io;
 use crate::board::Board;
+use crate::coin::Coin;
 
 pub fn read() -> io::Result<String> {
     let mut buffer = String::new();
@@ -14,11 +15,11 @@ pub fn render_board(board: &Board) {
         let mut line = String::from("|");
         for col_idx in 0..board.len() {
             match &board[col_idx][row_idx] {
-                Some(m) => {
-                    let s = format!("{}|", &m.player().player_char);
+                Coin::Player(player) => {
+                    let s = format!("{}|", player);
                     line.push_str(&s);
                 }, 
-                None => line.push_str("x|"),
+                Coin::Empty => line.push_str("x|"),
             }
         }
         println!("{}", line);

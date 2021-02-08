@@ -1,17 +1,18 @@
-#[derive(Copy, Clone, Debug)]
-pub struct Player {
-    pub player_type: PlayerType,
-    pub player_char: char
-}
-
-impl PartialEq for Player {
-    fn eq(&self, other: &Player) -> bool { 
-        self.player_char == other.player_char
-    }
-}
+use std::fmt;
+use std::fmt::Display;
 
 #[derive(Copy, Clone, Debug, PartialEq)]
-pub enum PlayerType {
-    Human,
-    Computer,
+pub enum Player {
+    Red,
+    Yellow,
+}
+
+impl Display for Player {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let char = match self {
+            Player::Red => 'R',
+            Player::Yellow => 'Y',
+        };
+        write!(f, "{}", char)
+    }
 }
